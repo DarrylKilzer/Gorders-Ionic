@@ -1,0 +1,7 @@
+{
+  "name": "Gorders",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
