@@ -1,5 +1,27 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { masks } from 'pixel-sprite-generator-nodejs'
+import { Sprite } from 'mixel'
+// import { masks } from 'pixel-sprite-generator-nodejs'
+
+const DRAGON_MASK = {
+  width: 12,
+  height: 12,
+  data: [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 1, 1, 2, 2, 1, 1, 0, 0, 0,
+    0, 0, 1, 1, 1, 2, 2, 1, 1, 1, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+    0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+    0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  ]
+}
 
 export class ValuesController extends BaseController {
   constructor() {
@@ -13,7 +35,8 @@ export class ValuesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      return res.send(['value1', 'value2'])
+      const sprite = new Sprite(masks.humanoid, { colored: true, colorVariations: Math.random() })
+      res.send({ seed: sprite })
     } catch (error) {
       next(error)
     }
